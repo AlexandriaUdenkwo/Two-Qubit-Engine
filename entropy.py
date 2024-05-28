@@ -49,12 +49,18 @@ for i in range(len(wxsteps)):
 #Plot entropy vs g/delta    
 plt.figure(1)
 fig1 = plt.figure(1)
+plt.figure(figsize=(3,1.5))
+plt.xlim(0, 5)
+plt.ylim(0,1.1)
 plt.plot(tan_qb_20[:len(wxsteps)-1], entropy_qb_20[:len(wxsteps)-1], label = r"$\delta$"+" = 20 MHz"); #plt.plot(wxsteps, entropy_qa_20, label = r"QA 20 MHz")
-plt.plot(tan_qb_13[:len(wxsteps)-1], entropy_qb_13[:len(wxsteps)-1], label = r"$\delta$"+r" = 13 MHz"); plt.legend() #plt.plot(wxsteps, entropy_qa_13, label = r"QA 13 MHz");plt.legend()
+plt.plot(tan_qb_13[:len(wxsteps)-1], entropy_qb_13[:len(wxsteps)-1], label = r"$\delta$"+r" = 13 MHz")
+plt.legend()
+
 plt.title(label = "S"+"$^{meas}$"+" vs g/"+r"$\delta$")
 plt.xlabel("g/"+r"$\delta$")
 plt.ylabel("S"+"$^{meas}$")
 #fig1.savefig('smeas_vs_gdelta_paper.pdf')
+
 
 #Let's look at rabi oscillations at the max entropy and near the max
 print("max at (for detuning 13 mhz): ", entropy_qb_13.argmax())
@@ -68,17 +74,21 @@ thirteen_file_qa = np.loadtxt(savedir+thirteen+ 'thirteen_qa.txt',np.float)
 timestep = np.linspace(0,500, 101)
 
 
-plt.figure(3)
-fig3 = plt.figure(3)
-plt.plot(timestep, thirteen_file_qb[cc],label = "P(01)", color = 'blue');plt.plot(timestep,thirteen_file_qa[cc], label ="P(10)", color = 'black');plt.legend()
-plt.title("Rabi Oscillations at " +"S"+"$^{meas}$" + "= 0.99, "+"g/"+r"$\delta$"+"= 1.0")
+plt.figure(2)
+fig3 = plt.figure(2)
+plt.figure(figsize=(3,1.5))
+plt.plot(timestep, thirteen_file_qb[cc],label = "P(01)", color = 'blue');plt.plot(timestep,thirteen_file_qa[cc], label ="P(10)", color = 'black')
+plt.legend()
+#plt.title("Rabi Oscillations at " +"S"+"$^{meas}$" + "= 0.99, "+"g/"+r"$\delta$"+"= 1.0")
 plt.xlabel("time (ns)")
 #fig3.savefig('rabi_touch_paper.pdf')
 
-plt.figure(4)
-fig4 = plt.figure(4)
-plt.plot(timestep,thirteen_file_qb[cc+2],label = "P(01)", color = 'blue');plt.plot(timestep,thirteen_file_qa[cc+2], label ="P(10)", color = 'black');plt.legend()
-plt.title("Rabi Oscillations at " +"S"+"$^{meas}$" + "= 0.93, "+"g/"+r"$\delta$"+"= 1.4")
+plt.figure(3)
+fig4 = plt.figure(3)
+plt.figure(figsize=(3,1.5))
+plt.plot(timestep,thirteen_file_qb[cc+2],label = "P(01)", color = 'blue');plt.plot(timestep,thirteen_file_qa[cc+2], label ="P(10)", color = 'black')
+plt.legend()
+#plt.title("Rabi Oscillations at " +"S"+"$^{meas}$" + "= 0.93, "+"g/"+r"$\delta$"+"= 1.4")
 plt.xlabel("time (ns)")
 #fig4.savefig('rabi_intersect_paper.pdf')
 
